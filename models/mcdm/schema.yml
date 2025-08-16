@@ -1,0 +1,77 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw ad platform data provided as seeds"
+    tables:
+      - name: src_ads_bing_all_data
+        description: "Bing Ads raw data"
+      - name: src_ads_creative_facebook_all_data
+        description: "Facebook Ads raw data"
+      - name: src_ads_tiktok_ads_all_data
+        description: "TikTok Ads raw data"
+      - name: src_promoted_tweets_twitter_all_data
+        description: "Twitter Ads raw data"
+
+models:
+  - name: mcdm_paid_ads_basic_performance
+    description: "Mapped cross-channel paid ads data into the MCDM schema"
+    columns:
+      - name: ad_id
+        description: "Unique identifier of the ad (nullable for some platforms without ad-level granularity)"
+      - name: add_to_cart
+        description: "Number of add-to-cart events"
+      - name: adset_id
+        description: "Identifier of the ad set / ad group"
+      - name: campaign_id
+        description: "Identifier of the campaign"
+      - name: channel
+        description: "Source channel (facebook, tiktok, bing, twitter)"
+        tests:
+          - not_null
+      - name: clicks
+        description: "Total number of clicks"
+      - name: comments
+        description: "Total number of comments"
+      - name: creative_id
+        description: "Identifier of the creative asset"
+      - name: date
+        description: "Event date"
+        tests:
+          - not_null
+      - name: engagements
+        description: "Total number of engagements"
+      - name: impressions
+        description: "Total number of impressions"
+        tests:
+          - not_null
+      - name: installs
+        description: "Number of installs"
+      - name: likes
+        description: "Total number of likes"
+      - name: link_clicks
+        description: "Number of link clicks"
+      - name: placement_id
+        description: "Identifier of placement (if applicable)"
+      - name: post_click_conversions
+        description: "Conversions attributed post-click"
+      - name: post_view_conversions
+        description: "Conversions attributed post-view"
+      - name: posts
+        description: "Number of posts"
+      - name: purchase
+        description: "Number of purchases"
+      - name: registrations
+        description: "Number of registrations"
+      - name: revenue
+        description: "Total revenue generated"
+      - name: shares
+        description: "Number of shares"
+      - name: spend
+        description: "Total spend amount"
+        tests:
+          - not_null
+      - name: total_conversions
+        description: "Total number of conversions"
+      - name: video_views
+        description: "Number of video views"

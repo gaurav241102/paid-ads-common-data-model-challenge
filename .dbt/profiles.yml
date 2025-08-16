@@ -1,0 +1,12 @@
+paid_ads_mcdm:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: paid-adds-challenge
+      dataset: paid_ads
+      keyfile: C:\Users\gaura\paid-ads-common-data-model-challenge\.dbt\paid-adds-challenge-b22c633e02cd.json
+      threads: 4
+      timeout_seconds: 300
+      location: US
